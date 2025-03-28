@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "address_list_icon.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
