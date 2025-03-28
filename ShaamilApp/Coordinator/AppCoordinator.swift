@@ -2,40 +2,12 @@
 //  AppCoordinator.swift
 //  MVVMWithCoordinator
 //
-//  Created by waqas ahmed on 16/03/2025.
+//  Created by waqas ahmed on 26/03/2025.
 //
 
 import SwiftUI
 import Combine
 final class AppCoordinator: ObservableObject {
-//
-//    @Published var isLoggedIn: Bool = true
-//    @Published var isLoading: Bool = false
-//    //@Published var selectedTab: Tab = .home
-//    @Published var authCoordinator = AuthCoordinator()
-//    @Published var homeCoordinator = HomeCoordinator()
-//    @Published var reportCoordinator = ReportCoordinator()
-//    @Published var path = NavigationPath()
-//    @Published var presentedDestination: Destination?
-//    
-//    
-//    func push(to destination: Destination) {
-//           path.append(destination)
-//       }
-//
-//       func pop() {
-//           if !path.isEmpty {
-//               path.removeLast()
-//           }
-//       }
-//
-//       func present(_ destination: Destination) {
-//           presentedDestination = destination
-//       }
-//
-//       func dismiss() {
-//           presentedDestination = nil
-//       }
     
     static let shared = AppCoordinator()  // Singleton for deep linking
 
@@ -47,21 +19,21 @@ final class AppCoordinator: ObservableObject {
 
        enum Tab {
            case home
-           case reports
+           case orders
        }
     
     // Separate paths to avoid "let constant" issue
        @Published var homePath = NavigationPath()
-       @Published var reportPath = NavigationPath()
+       @Published var orderPath = NavigationPath()
        @Published var authPath = NavigationPath()
 
        let authCoordinator = AuthCoordinator()
        let homeCoordinator = HomeCoordinator()
-       let reportCoordinator = ReportCoordinator()
+       let orderCoordinator = OrderCoordinator()
 
        func resetPaths() {
            homePath = NavigationPath()
-           reportPath = NavigationPath()
+           orderPath = NavigationPath()
            authPath = NavigationPath()
        }
 
@@ -79,9 +51,9 @@ final class AppCoordinator: ObservableObject {
                    case .settings:
                        self.selectedTab = .home
                        self.homeCoordinator.push(to: .settings)
-                   case .reportDetails:
-                       self.selectedTab = .reports
-                       self.reportCoordinator.push(to: .reportDetails)
+                   case .orderDetails:
+                       self.selectedTab = .orders
+                       self.orderCoordinator.push(to: .orderDetails)
                    case .login:
                        self.isLogin = false
                        self.authCoordinator.push(to: .login)
@@ -95,33 +67,6 @@ final class AppCoordinator: ObservableObject {
                self.deepLink = deepLink
            }
        }
-    
-    
-    
-//    enum Tab {
-//        case home, discover, profile
-//    }
-//    
-//    func checkIsLoggedIn() {
-//        //After that we need to implement using user-defaults
-//        isLoggedIn = true
-//    }
-//    
-//    func handleDeeplinks(_ deepLinks: String) {
-//        switch deepLinks {
-//        case "home":
-//            selectedTab = .home
-//        case "settings":
-//            selectedTab = .home
-//            homeCoordinator.push(.settings)
-//        case "report":
-//            selectedTab = .discover
-//            reportCoordinator.push(.reportDetails)
-//        default:
-//            break
-//        }
-//    }
-    
 }
 
 

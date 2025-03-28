@@ -6,35 +6,13 @@
 //
 
 import SwiftUI
-//final class ReportCoordinator: Coordinator {
-//    @Published var path = NavigationPath()
-//    @Published var presentedDestination: Destination?
-//    typealias Destination = ReportDestination
-//   
-//    func push(to destination: Destination) {
-//        path.append(destination)
-//    }
-//    
-//    func present(_ destination: Destination) {
-//        presentedDestination = destination
-//    }
-//        
-//    func pop() {
-//        path.removeLast()
-//    }
-//    
-//    func dismiss() {
-//        presentedDestination = nil
-//    }
-//}
-
 import Combine
 
-final class ReportCoordinator: ObservableObject {
+final class OrderCoordinator: ObservableObject {
     @Published var path = NavigationPath()
     let deepLink = PassthroughSubject<DeepLink, Never>()
 
-    func push(to destination: ReportDestination) {
+    func push(to destination: OrderDestination) {
         path.append(destination)
     }
 
@@ -46,8 +24,8 @@ final class ReportCoordinator: ObservableObject {
 
     func handleDeepLink(_ link: DeepLink) {
         switch link {
-        case .reportDetails:
-            push(to: .reportDetails)
+        case .orderDetails:
+            push(to: .orderDetails)
         default:
             break
         }

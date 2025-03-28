@@ -1,18 +1,18 @@
 //
-//  ReportDestination.swift
+//  OrderDestination.swift
 //  MVVMWithCoordinator
 //
-//  Created by waqas ahmed on 16/03/2025.
+//  Created by waqas ahmed on 26/03/2025.
 //
 
 import Foundation
-enum ReportDestination: Hashable, Identifiable {
-    case reportDetails
+enum OrderDestination: Hashable, Identifiable {
+    case orderDetails
     
     var id: String {
         switch self {
-        case .reportDetails:
-            return "reportDetails"
+        case .orderDetails:
+            return "orderDetails"
         }
     }
 }

@@ -11,8 +11,8 @@ struct TabBarButton: View {
     let icon: String
     let title: String
     let index: Int
-    let iconWidth: CGFloat = 24
-    let iconHeight: CGFloat = 24
+    let iconWidth: CGFloat = 20
+    let iconHeight: CGFloat = 20
     @Binding var selectedTab: Int
     
     var body: some View {
@@ -22,7 +22,7 @@ struct TabBarButton: View {
             VStack {
                 Image(icon)
                     .resizable()
-                    .frame(width: 24, height: 24)
+                    .frame(width: iconWidth, height: iconHeight)
                     .foregroundColor(selectedTab == index ? .accent : Color.grayImageColor)
                 
                 Text(title)
