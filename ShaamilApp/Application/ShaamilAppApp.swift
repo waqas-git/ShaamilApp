@@ -11,7 +11,7 @@ import SwiftUI
 struct ShaamilAppApp: App {
     var body: some Scene {
         WindowGroup {
-            PhoneVerificationView()
+            RootView()
         }
     }
 }

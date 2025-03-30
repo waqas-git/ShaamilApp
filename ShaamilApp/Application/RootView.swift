@@ -33,7 +33,12 @@ struct RootView: View {
                             }
                         }
                 }
-                .tabItem { TabBarButton(icon: "home_icon", title: "Home", index: 0, selectedTab: $selectedTab) }
+                .tabItem {
+                    Image(systemName: "house.fill")
+                        .resizable()
+                        .renderingMode(.template)
+                    Text("Home")
+                    }
                 .tag(AppCoordinator.Tab.home)
                 .environmentObject(homeCoordinator)
 
@@ -47,7 +52,11 @@ struct RootView: View {
                             }
                         }
                 }
-                .tabItem { TabBarButton(icon: "order_icon", title: "Orders", index: 0, selectedTab: $selectedTab) }
+                .tabItem { /*TabBarButton(icon: "order_icon", title: "Orders", index: 0, selectedTab: $selectedTab)*/
+                    Image(systemName: "archivebox.fill")
+                        .resizable()
+                        .renderingMode(.template)
+                    Text("Orders")}
                 .tag(AppCoordinator.Tab.orders)
                 .environmentObject(orderCoordinator)
                 
@@ -77,13 +86,17 @@ struct RootView: View {
                             }
                         }
                 }
-                .tabItem { TabBarButton(icon: "wallet_icon", title: "Wallet", index: 0, selectedTab: $selectedTab) }
+                .tabItem { /*TabBarButton(icon: "wallet_icon", title: "Wallet", index: 0, selectedTab: $selectedTab)*/
+                    Image(systemName: "wallet.bifold.fill")
+                        .resizable()
+                        .renderingMode(.template)
+                    Text("Settings")}
                 .tag(AppCoordinator.Tab.wallet)
                 .environmentObject(walletCoordinator)
                 
                 // MARK:  -Settings Navigation
                 NavigationStack(path: $walletCoordinator.path) {
-                    PointsScreen()
+                    SettingsScreen()
                         .navigationDestination(for: SettingsDestination.self) { destination in
                             switch destination {
                             case .details(_):
@@ -91,7 +104,11 @@ struct RootView: View {
                             }
                         }
                 }
-                .tabItem { TabBarButton(icon: "settings_icon", title: "Settings", index: 0, selectedTab: $selectedTab) }
+                .tabItem { /*TabBarButton(icon: "settings_icon", title: "Settings", index: 0, selectedTab: $selectedTab)*/
+                    Image(systemName: "gearshape.fill")
+                        .resizable()
+                        .renderingMode(.template)
+                    Text("Settings")}
                 .tag(AppCoordinator.Tab.settings)
                 .environmentObject(settingsCoordinator)
                 

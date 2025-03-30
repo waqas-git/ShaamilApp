@@ -13,27 +13,10 @@ struct AddressListView: View {
     
     var body: some View {
         VStack {
-            // Back Button
-            ZStack {
-                Text("Addresses")
-                    .font(.custom(Font.quicksandRegular, size: 23))
-                    .foregroundColor(Color.textGray)
-                    //.padding(.top, 8)
-
-                HStack {
-                    Button(action: { dismiss() }) {
-                        Image(systemName: "arrow.left")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.secondaryGreen)
-                            .clipShape(Circle())
-                    }
-                    .frame(width: 40, height: 40)
-                    
-                    Spacer()
-                }
-            }
+            
+            HeaderView(title: "Addresses", onBack: {
+                dismiss()
+            })
             .frame(maxWidth: .infinity)
             .padding(.horizontal)
             

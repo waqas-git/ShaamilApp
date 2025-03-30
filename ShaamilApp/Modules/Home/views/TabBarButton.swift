@@ -22,8 +22,10 @@ struct TabBarButton: View {
             VStack {
                 Image(icon)
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: iconWidth, height: iconHeight)
                     .foregroundColor(selectedTab == index ? .accent : Color.grayImageColor)
+                    .clipped()
                 
                 Text(title)
                     .font(.custom(Font.quicksandRegular, size: 11))
@@ -35,5 +37,5 @@ struct TabBarButton: View {
 }
 
 #Preview {
-    TabBarButton(icon: ("setting_icon_disable"), title: "Home", index: 1, selectedTab: .constant(0))
+    TabBarButton(icon: ("settings_icon"), title: "Home", index: 1, selectedTab: .constant(0))
 }

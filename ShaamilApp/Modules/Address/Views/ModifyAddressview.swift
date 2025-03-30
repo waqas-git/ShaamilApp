@@ -18,27 +18,10 @@ struct ModifyAddressview: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            // Back Button
-            ZStack {
-                Text("Modify Address")
-                    .font(.custom(Font.quicksandRegular, size: 23))
-                    .foregroundColor(Color.textGray)
-                    //.padding(.top, 8)
-
-                HStack {
-                    Button(action: { dismiss() }) {
-                        Image(systemName: "arrow.left")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.secondaryGreen)
-                            .clipShape(Circle())
-                    }
-                    .frame(width: 40, height: 40)
-                    
-                    Spacer()
-                }
-            }
+            
+            HeaderView(title: "Modify Address", onBack: {
+                dismiss()
+            })
             
             HStack{
                 Spacer()
