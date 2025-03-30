@@ -10,20 +10,26 @@ struct RootView: View {
     @StateObject private var appCoordinator = AppCoordinator.shared
     @StateObject var authCoordinator = AuthCoordinator()
     @StateObject var homeCoordinator = HomeCoordinator()
-    @StateObject var reportCoordinator = OrderCoordinator()
+    @StateObject var orderCoordinator = OrderCoordinator()
+    @StateObject var pointsCoordinator = PointsCoordinator()
+    @StateObject var walletCoordinator = WalletCoordinator()
+    @StateObject var settingsCoordinator = SettingsCoordinator()
     @State private var selectedTab = 0
 
     var body: some View {
         if appCoordinator.isLogin {
             TabView(selection: $appCoordinator.selectedTab) {
+                // MARK: -Home Navigation
                 NavigationStack(path: $homeCoordinator.path) {
                     HomeScreen()
                         .navigationDestination(for: HomeDestination.self) { destination in
                             switch destination {
-                            case .settings:
-                                Text("Settings View")
+                            case .coupon:
+                                Text("Coupons View")
                             case .detail(_):
                                 Text("Detail View")
+                            case .deals:
+                                Text("Deals View")
                             }
                         }
                 }
@@ -31,7 +37,8 @@ struct RootView: View {
                 .tag(AppCoordinator.Tab.home)
                 .environmentObject(homeCoordinator)
 
-                NavigationStack(path: $reportCoordinator.path) {
+                // MARK: -Order Navigation
+                NavigationStack(path: $orderCoordinator.path) {
                     OrderScreen()
                         .navigationDestination(for: OrderDestination.self) { destination in
                             switch destination {
@@ -42,7 +49,52 @@ struct RootView: View {
                 }
                 .tabItem { TabBarButton(icon: "order_icon", title: "Orders", index: 0, selectedTab: $selectedTab) }
                 .tag(AppCoordinator.Tab.orders)
-                .environmentObject(reportCoordinator)
+                .environmentObject(orderCoordinator)
+                
+                // MARK:  -Points Navigation
+                NavigationStack(path: $pointsCoordinator.path) {
+                    PointsScreen()
+                        .navigationDestination(for: PointsDestination.self) { destination in
+                            switch destination {
+                            case .coupon:
+                                Text("coupons")
+                            case .deals:
+                                Text("Deals")
+                            }
+                        }
+                }
+                .tabItem { TabBarButton(icon: "points_icon", title: "", index: 0, selectedTab: $selectedTab) }
+                .tag(AppCoordinator.Tab.points)
+                .environmentObject(pointsCoordinator)
+                
+                // MARK:  -Wallet Navigation
+                NavigationStack(path: $walletCoordinator.path) {
+                    PointsScreen()
+                        .navigationDestination(for: WalletDestination.self) { destination in
+                            switch destination {
+                            case .paymentMethod:
+                                Text("Payment Method")
+                            }
+                        }
+                }
+                .tabItem { TabBarButton(icon: "wallet_icon", title: "Wallet", index: 0, selectedTab: $selectedTab) }
+                .tag(AppCoordinator.Tab.wallet)
+                .environmentObject(walletCoordinator)
+                
+                // MARK:  -Settings Navigation
+                NavigationStack(path: $walletCoordinator.path) {
+                    PointsScreen()
+                        .navigationDestination(for: SettingsDestination.self) { destination in
+                            switch destination {
+                            case .details(_):
+                                Text("Details")
+                            }
+                        }
+                }
+                .tabItem { TabBarButton(icon: "settings_icon", title: "Settings", index: 0, selectedTab: $selectedTab) }
+                .tag(AppCoordinator.Tab.settings)
+                .environmentObject(settingsCoordinator)
+                
             }
         } else {
             NavigationStack(path: $authCoordinator.path) {

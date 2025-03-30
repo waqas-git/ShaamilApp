@@ -13,6 +13,8 @@ enum DeepLink {
     case settings
     case orderDetails
     case login
+    case points
+    case wallet
 }
 
 final class DeepLinkHandler {
@@ -29,6 +31,10 @@ final class DeepLinkHandler {
             return .orderDetails
         case "login":
             return .login
+        case "points":
+            return .points
+        case "wallet":
+            return .wallet
         default:
             return nil
         }

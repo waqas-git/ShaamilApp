@@ -8,14 +8,17 @@
 import Foundation
 enum HomeDestination: Hashable, Identifiable{
     case detail(Int)
-    case settings
+    case deals
+    case coupon
     
     var id: String {
         switch self {
         case .detail(let item):
             return "detail-\(item)"
-        case .settings:
-            return "settings"
+        case .deals:
+            return "deals"
+        case .coupon:
+            return "coupon"
         }
     }
 }
