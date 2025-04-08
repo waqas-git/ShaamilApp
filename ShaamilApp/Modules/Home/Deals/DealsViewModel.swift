@@ -8,4 +8,5 @@
 import SwiftUI
 class DealsViewModel: ObservableObject{
     @Published var dealsItems: String = ""
+    var title: String = "Deals"
 }

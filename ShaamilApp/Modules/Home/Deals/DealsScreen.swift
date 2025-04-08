@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DealsScreen: View {
     @Environment(\.dismiss) var dismiss
+    var viewModel = DealsViewModel()
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .top) {
@@ -19,7 +20,7 @@ struct DealsScreen: View {
                         .frame(width: .infinity, height: geometry.size.height * 0.35)
                     
                     VStack(alignment: .center){
-                        HeaderView(title: "Deals", foregroundColor: .white){
+                        HeaderView(title: viewModel.title, foregroundColor: .white){
                             dismiss()
                         }
                         .padding(.horizontal)
