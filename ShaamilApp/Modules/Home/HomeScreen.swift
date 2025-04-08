@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeScreen: View {
     @StateObject var viewModel = HomeViewModel()
-    
+    @EnvironmentObject var homeCoordinator: HomeCoordinator
     var body: some View {
         ScrollView{
             VStack(spacing: 10){
@@ -38,7 +38,7 @@ struct HomeScreen: View {
                     })
                         
                     DealsCouponCell(title: "Your", subtitle: "COUPON", iconName: "deal_icon", onTap: {
-                        print("COUPON Tapped")
+                        homeCoordinator.push(to: .coupon)
                     })
                 }
             }

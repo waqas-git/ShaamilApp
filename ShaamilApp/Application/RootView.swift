@@ -25,7 +25,7 @@ struct RootView: View {
                         .navigationDestination(for: HomeDestination.self) { destination in
                             switch destination {
                             case .coupon:
-                                Text("Coupons View")
+                                CouponScreen()
                             case .detail(_):
                                 Text("Detail View")
                             case .deals:

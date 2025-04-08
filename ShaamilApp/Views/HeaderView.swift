@@ -9,13 +9,14 @@ import SwiftUI
 
 struct HeaderView: View {
     var title: String
+    var foregroundColor: Color?
     var onBack: (() -> Void)?
-    
+
     var body: some View {
         ZStack {
             Text(title)
                 .font(.custom(Font.quicksandRegular, size: 23))
-                .foregroundColor(Color.textGray)
+                .foregroundColor((foregroundColor != nil) ? foregroundColor : Color.textGray)
                 //.padding(.top, 8)
 
             HStack {
